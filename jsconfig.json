@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src",
+    "types",
+    "eslint.config.js",
+    "vite.config.js",
+    "vitest.config.js"
+  ],
+  "exclude": ["node_modules", "dist"]
+}

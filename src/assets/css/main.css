@@ -1,0 +1,26 @@
+@import '@unocss/reset/tailwind-compat.css';
+
+html,
+body,
+#app {
+  --uno: h-full m-0 p-0;
+}
+
+::-webkit-scrollbar {
+  width: 0.45rem;
+  height: 0.45rem;
+}
+
+::-webkit-scrollbar-track {
+  --uno: rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  --uno: rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-corner {
+}
