@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "~/*": ["src/*"],
+      "~pub/*": ["public/*"]
     }
   },
-  "include": [
-    "src",
-    "types",
-    "eslint.config.js",
-    "vite.config.js",
-    "vitest.config.js"
-  ],
-  "exclude": ["node_modules", "dist"]
+  "exclude": [
+    "dist",
+    "public",
+    ".vscode",
+    "node_modules"
+  ]
 }

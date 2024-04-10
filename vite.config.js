@@ -33,9 +33,12 @@ export default defineConfig({
     }),
   ],
   resolve: {
-    alias: toAlias({
-      '@': './src',
-    }),
+    alias: {
+      '~pub': '',
+      ...toAlias({
+        '~': './src',
+      }),
+    },
   },
 })
 
