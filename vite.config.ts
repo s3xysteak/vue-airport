@@ -8,10 +8,15 @@ import UnoCSS from 'unocss/vite'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 
 import { autoImport as AutoImportUtils } from '@s3xysteak/utils'
 
 export default defineConfig({
+  base: '',
+  server: {
+    host: '0.0.0.0',
+  },
   plugins: [
     vue(),
     vueJsx(),
@@ -30,6 +35,9 @@ export default defineConfig({
     }),
     Components({
       dts: 'types/components.d.ts',
+      resolvers: [
+        ArcoResolver(),
+      ],
     }),
   ],
   resolve: {
@@ -42,10 +50,7 @@ export default defineConfig({
   },
 })
 
-/**
- * @param {Record<string, string>} aliasMap
- */
-function toAlias(aliasMap) {
+function toAlias(aliasMap: Record<string, string>) {
   return Object.fromEntries(
     Object.entries(aliasMap).map(([key, value]) => [
       key,
