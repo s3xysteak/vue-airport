@@ -1,15 +1,20 @@
-import { INJECT_KEY } from './shared'
+import type { InjectionKey, Ref } from 'vue'
+
+interface Inject {
+  currentValue: Ref<string | number>
+}
+export const INJECT_KEY = Symbol('menu') as InjectionKey<Inject>
 
 export default defineComponent(
   (props, { slots, emit }) => {
-    const checked = props?.modelValue
+    const currentValue = props?.modelValue
       ? computed({
         get: () => props.modelValue,
         set: val => emit('update:modelValue', val),
       })
       : ref(props?.initial ?? '')
 
-    provide(INJECT_KEY, { checked })
+    provide(INJECT_KEY, { currentValue })
 
     return () => h('div', slots.default && slots.default())
   },

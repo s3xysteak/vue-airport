@@ -1,18 +1,18 @@
-import { cloneVNode } from 'vue'
-import { INJECT_KEY } from './shared'
+import { type SlotsType, cloneVNode } from 'vue'
+import { INJECT_KEY } from './Menulist'
 
 export default defineComponent(
   (props, { slots }) => {
-    const { checked } = inject(INJECT_KEY)!
+    const { currentValue } = inject(INJECT_KEY)!
 
     const errorStr = '[Menu] 必须有且仅有一个子节点'
 
     if (!slots?.default)
       throw new Error(errorStr)
 
-    const selected = computed(() => checked.value === props.value)
+    const checked = computed(() => currentValue.value === props.value)
 
-    const vSlot = reactive({ selected })
+    const vSlot = reactive({ checked })
 
     if (!slots.default)
       throw new Error('[Menu] 必须至少有一个子元素')
@@ -26,7 +26,7 @@ export default defineComponent(
 
       const cloned = cloneVNode(child, {
         onClick: () => {
-          checked.value = props.value
+          currentValue.value = props.value
         },
       })
 
@@ -41,5 +41,8 @@ export default defineComponent(
         required: true,
       },
     },
+    slots: Object as SlotsType<{
+      default: { checked: boolean }
+    }>,
   },
 )

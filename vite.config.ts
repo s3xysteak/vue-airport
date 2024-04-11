@@ -34,6 +34,7 @@ export default defineConfig({
       ],
     }),
     Components({
+      extensions: ['vue', 'ts'],
       dts: 'types/components.d.ts',
       resolvers: [
         ArcoResolver(),
