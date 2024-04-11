@@ -22,6 +22,9 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: ^2.13.3
     version: 2.13.3(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(eslint@8.57.0)(typescript@5.4.5)(vitest@1.4.0)
+  '@iconify/utils':
+    specifier: ^2.1.22
+    version: 2.1.22
   '@tsconfig/node20':
     specifier: ^20.1.4
     version: 20.1.4
