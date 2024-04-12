@@ -12,6 +12,6 @@
 
     "allowJs": true
   },
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "types/**/*.d.ts"],
+  "include": ["src/**/*", "src/**/*.vue", "types/**/*.d.ts"],
   "exclude": ["src/**/__tests__/*"]
 }
