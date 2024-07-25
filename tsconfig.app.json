@@ -1,8 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
@@ -14,8 +12,7 @@
     "types": [
       "vitest/importMeta"
     ],
-    "allowJs": true,
-    "declaration": false
+    "allowJs": true
   },
   "include": ["src/**/*", "src/**/*.vue", "types/**/*.d.ts"],
   "exclude": ["src/**/__tests__/*"]
