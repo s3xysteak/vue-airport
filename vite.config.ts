@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { URL, fileURLToPath } from 'node:url'
 
 import { defineConfig } from 'vite'
@@ -8,9 +9,8 @@ import UnoCSS from 'unocss/vite'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 
-import { autoImport as AutoImportUtils } from '@s3xysteak/utils'
+import UtilsResolver from '@s3xysteak/utils/resolver'
 
 export default defineConfig({
   base: '',
@@ -30,32 +30,34 @@ export default defineConfig({
       ],
       imports: [
         'vue',
-        AutoImportUtils(),
+      ],
+      resolvers: [
+        UtilsResolver(),
       ],
     }),
     Components({
       extensions: ['vue', 'ts'],
       dts: 'types/components.d.ts',
-      resolvers: [
-        ArcoResolver(),
-      ],
     }),
   ],
   resolve: {
     alias: {
+      '~': r('./src'),
       '~pub': '',
-      ...toAlias({
-        '~': './src',
-      }),
+
+      '@': r('./src'),
+      '@pub': '',
     },
+  },
+  define: {
+    'import.meta.vitest': 'undefined',
+  },
+  test: {
+    environment: 'jsdom',
+    includeSource: ['./src/**/*.ts'],
   },
 })
 
-function toAlias(aliasMap: Record<string, string>) {
-  return Object.fromEntries(
-    Object.entries(aliasMap).map(([key, value]) => [
-      key,
-      fileURLToPath(new URL(value, import.meta.url)),
-    ]),
-  )
+function r(path: string) {
+  return fileURLToPath(new URL(path, import.meta.url))
 }
